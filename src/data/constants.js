@@ -7,7 +7,7 @@ export const Bio = {
     "I am a Full Stack Developer, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
   github: "https://github.com/anuragbhatt408",
   resume:
-    "https://drive.google.com/file/d/1fD4d6ksanRhjObaNIBxNlcb8JB8r5fdu/view?usp=sharing",
+    "https://drive.google.com/file/d/1JAYx3ais35P7NfzX72Av8QUEseJ8e3cs/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/anuragbhatt408",
   twitter: "https://x.com/Anuragbhatt408",
 };
