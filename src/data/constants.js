@@ -1,4 +1,5 @@
 import cryptoInfo from "../components/images/crypto-info.png";
+import insight_ai from "../components/images/insight.png";
 
 export const Bio = {
   name: "Anurag Bhatt",
@@ -277,11 +278,11 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Insightboard-a",
+    title: "Insightboard-ai",
     date: "May 2025 - Jun 2025",
     description:
       "InsightBoard AI is a full-stack productivity tool that converts meeting transcripts into actionable tasks using LLMs like OpenAI or Google Gemini. It features real-time task management, progress visualization with interactive charts, and a modern UI built with Next.js, Tailwind CSS, and Shadcn UI. Deployed on Vercel and Render with a fully documented codebase.",
-    image: cryptoInfo,
+    image: insight_ai,
     tags: [
       "NextJs",
       "Reactjs",

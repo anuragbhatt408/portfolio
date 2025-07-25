@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 // import emailjs from "@emailjs/browser";
-import Toastify from "toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   display: flex;
@@ -129,29 +130,35 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
-    Toastify.success("Message Sent");
+    toast.success("Message sent");
   };
   return (
-    <Container id="Education">
-      <Wrapper>
-        <Title>Contact</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
-          Feel free to reach out to me for any questions or opportunities!
-        </Desc>
-        <ContactForm onSubmit={handleSubmit} ref={form}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          {/* <ContactInput placeholder="Subject" name="subject" /> */}
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
-          <ContactButton type="submit" value="Send" />
-        </ContactForm>
-      </Wrapper>
-    </Container>
+    <>
+      <Container id="Education">
+        <Wrapper>
+          <Title>Contact</Title>
+          <Desc
+            style={{
+              marginBottom: "40px",
+            }}
+          >
+            Feel free to reach out to me for any questions or opportunities!
+          </Desc>
+          <ContactForm onSubmit={handleSubmit} ref={form}>
+            <ContactTitle>Email Me 🚀</ContactTitle>
+            <ContactInput placeholder="Your Email" name="from_email" />
+            <ContactInput placeholder="Your Name" name="from_name" />
+            {/* <ContactInput placeholder="Subject" name="subject" /> */}
+            <ContactInputMessage
+              placeholder="Message"
+              name="message"
+              rows={4}
+            />
+            <ContactButton type="submit" value="Send" />
+          </ContactForm>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

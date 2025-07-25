@@ -11,6 +11,7 @@ import StartCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
+import { ToastContainer } from "react-toastify";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -57,6 +58,7 @@ function App() {
           </div>
         </Body>
       </BrowserRouter>
+      <ToastContainer />
     </ThemeProvider>
   );
 }
