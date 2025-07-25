@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 // import emailjs from "@emailjs/browser";
+import Toastify from "toastify";
 
 const Container = styled.div`
   display: flex;
@@ -126,8 +127,9 @@ const Contact = () => {
   //     );
   // };
   const handleSubmit = (e) => {
-    alert("Message Sent");
+    e.preventDefault();
     e.target.reset();
+    Toastify.success("Message Sent");
   };
   return (
     <Container id="Education">

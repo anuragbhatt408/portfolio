@@ -277,6 +277,30 @@ export const education = [
 export const projects = [
   {
     id: 1,
+    title: "Insightboard-a",
+    date: "May 2025 - Jun 2025",
+    description:
+      "InsightBoard AI is a full-stack productivity tool that converts meeting transcripts into actionable tasks using LLMs like OpenAI or Google Gemini. It features real-time task management, progress visualization with interactive charts, and a modern UI built with Next.js, Tailwind CSS, and Shadcn UI. Deployed on Vercel and Render with a fully documented codebase.",
+    image: cryptoInfo,
+    tags: [
+      "NextJs",
+      "Reactjs",
+      "generative-ai",
+      "gemini",
+      "React-Chartjs",
+      "ChartJs",
+      "ExpressJs",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Vercel",
+      "Render",
+    ],
+    category: "web app",
+    github: "https://github.com/anuragbhatt408/insightboard_ai",
+    webapp: "https://insightboard-ai.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Crypto-Info",
     date: "Jun 2022 - Jul 2023",
     description:
@@ -288,7 +312,7 @@ export const projects = [
     webapp: "https://crypto-info-gamma.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Auth Microservice",
     date: "Jan 2024 - Mar 2024",
     description:
@@ -300,7 +324,7 @@ export const projects = [
     github: "https://github.com/anuragbhatt408/auth_system",
   },
   {
-    id: 3,
+    id: 4,
     title: "Expense Tracker",
     date: "Aug 2023 - Oct 2023",
     description:
