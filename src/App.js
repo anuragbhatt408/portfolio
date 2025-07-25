@@ -11,6 +11,8 @@ import StartCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
+import "react-toastify/dist/ReactToastify.css";
+// eslint-disable-next-line no-unused-vars
 import { ToastContainer } from "react-toastify";
 
 const Body = styled.div`
