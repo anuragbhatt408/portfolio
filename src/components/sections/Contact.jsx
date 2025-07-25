@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
   display: flex;
@@ -106,24 +106,28 @@ const ContactButton = styled.input`
 
 const Contact = () => {
   const form = useRef(null);
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_Service_ID,
-        process.env.REACT_APP_Template_ID,
-        form.current,
-        process.env.REACT_APP_Public_KEY
-      )
-      .then(
-        (result) => {
-          alert("Message Sent");
-          e.target.reset();
-        },
-        (error) => {
-          alert(error);
-        }
-      );
+  // const handelSubmit = (e) => {
+  //   e.preventDefault();
+  //   emailjs
+  //     .sendForm(
+  //       process.env.REACT_APP_Service_ID,
+  //       process.env.REACT_APP_Template_ID,
+  //       form.current,
+  //       process.env.REACT_APP_Public_KEY
+  //     )
+  //     .then(
+  //       (result) => {
+  //         alert("Message Sent");
+  //         e.target.reset();
+  //       },
+  //       (error) => {
+  //         alert(error);
+  //       }
+  //     );
+  // };
+  const handleSubmit = (e) => {
+    alert("Message Sent");
+    e.target.reset();
   };
   return (
     <Container id="Education">
@@ -136,7 +140,7 @@ const Contact = () => {
         >
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handelSubmit} ref={form}>
+        <ContactForm onSubmit={handleSubmit} ref={form}>
           <ContactTitle>Email Me 🚀</ContactTitle>
           <ContactInput placeholder="Your Email" name="from_email" />
           <ContactInput placeholder="Your Name" name="from_name" />
