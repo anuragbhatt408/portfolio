@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 
 const Container = styled.div`
@@ -103,33 +103,42 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
 `;
 
 const Contact = () => {
   const form = useRef(null);
-  // const handelSubmit = (e) => {
-  //   e.preventDefault();
-  //   emailjs
-  //     .sendForm(
-  //       process.env.REACT_APP_Service_ID,
-  //       process.env.REACT_APP_Template_ID,
-  //       form.current,
-  //       process.env.REACT_APP_Public_KEY
-  //     )
-  //     .then(
-  //       (result) => {
-  //         alert("Message Sent");
-  //         e.target.reset();
-  //       },
-  //       (error) => {
-  //         alert(error);
-  //       }
-  //     );
-  // };
-  const handleSubmit = (e) => {
+  const [isSending, setIsSending] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    e.target.reset();
-    toast.success("Message sent");
+
+    const serviceId = process.env.REACT_APP_Service_ID;
+    const templateId = process.env.REACT_APP_Template_ID;
+    const publicKey = process.env.REACT_APP_Public_KEY;
+
+    if (!serviceId || !templateId || !publicKey || !form.current) {
+      toast.error("Email is not configured. Please contact me directly.");
+      return;
+    }
+
+    setIsSending(true);
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form.current, publicKey);
+      form.current.reset();
+      toast.success("Message sent successfully.");
+    } catch (error) {
+      console.error("EmailJS failed to send the contact message.", error);
+      toast.error("Unable to send your message. Please try again later.");
+    } finally {
+      setIsSending(false);
+    }
   };
   return (
     <>
@@ -145,15 +154,31 @@ const Contact = () => {
           </Desc>
           <ContactForm onSubmit={handleSubmit} ref={form}>
             <ContactTitle>Email Me 🚀</ContactTitle>
-            <ContactInput placeholder="Your Email" name="from_email" />
-            <ContactInput placeholder="Your Name" name="from_name" />
+            <ContactInput
+              type="email"
+              placeholder="Your Email"
+              name="from_email"
+              autoComplete="email"
+              required
+            />
+            <ContactInput
+              placeholder="Your Name"
+              name="from_name"
+              autoComplete="name"
+              required
+            />
             {/* <ContactInput placeholder="Subject" name="subject" /> */}
             <ContactInputMessage
               placeholder="Message"
               name="message"
               rows={4}
+              required
             />
-            <ContactButton type="submit" value="Send" />
+            <ContactButton
+              type="submit"
+              value={isSending ? "Sending..." : "Send"}
+              disabled={isSending}
+            />
           </ContactForm>
         </Wrapper>
       </Container>
