@@ -48,28 +48,35 @@ const Desc = styled.div`
 
 const SkillsContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  column-count: 2;
+  column-gap: 32px;
   margin-top: 20px;
-  gap: 50px;
-  justify-content: center;
+
+  & > div {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 24px;
+    break-inside: avoid;
+  }
+
+  @media (max-width: 700px) {
+    column-count: 1;
+    max-width: 500px;
+  }
 `;
 
 const Skill = styled.div`
   width: 100%;
-  max-width: 500px;
   background-color: rgba(17, 25, 40, 0.83);
   border: 1px solid rgba(255, 255, 255, 0.125);
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   border-radius: 16px;
   padding: 18px 36px;
   @media (max-width: 768px) {
-    max-width: 400px;
     padding: 10px 36px;
   }
 
   @media (max-width: 500px) {
-    max-width: 330px;
     padding: 10px 36px;
   }
 `;
@@ -125,19 +132,19 @@ const Skills = () => {
             marginBottom: "40px",
           }}
         >
-          Here are some of my skills on which I have been working on for the
-          past 3 years.
+          Here are some of the core technologies and engineering skills I have
+          built over 4+ years of experience.
         </Desc>
 
         <SkillsContainer>
           {skills.map((skill, index) => (
-            <Tilt>
-              <Skill key={`skill-${index}`}>
+            <Tilt key={`skill-${index}`}>
+              <Skill>
                 <SkillTitle>{skill.title}</SkillTitle>
                 <SkillList>
                   {skill.skills.map((item, index_x) => (
                     <SkillItem key={`skill-x-${index_x}`}>
-                      <SkillImage src={item.image} />
+                      <SkillImage src={item.image} alt="" loading="lazy" />
                       {item.name}
                     </SkillItem>
                   ))}

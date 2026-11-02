@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
-import HeroImg from "../images/profile.jpg";
+import HeroImg from "../images/profile.webp";
 import HeroBgAnimation from "../HeroBgAnimation";
 import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
@@ -11,7 +11,6 @@ import {
   headContentAnimation,
   headTextAnimation,
 } from "../../utils/motion";
-import StarCanvas from "../canvas/Stars";
 
 const HeroContainer = styled.div`
   display: flex;
@@ -177,17 +176,48 @@ const ResumeButton = styled.a`
     color: white;
 `;
 
-const Img = styled.img`
+const PortraitFrame = styled.div`
+  width: min(360px, 78vw);
+  aspect-ratio: 1;
+  padding: 6px;
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
-  max-height: 400px;
-  border: 2px solid ${({ theme }) => theme.primary};
+  background: linear-gradient(
+    145deg,
+    ${({ theme }) => theme.primary},
+    rgba(70, 115, 214, 0.45) 55%,
+    rgba(255, 255, 255, 0.16)
+  );
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
 
   @media (max-width: 640px) {
-    max-width: 280px;
-    max-height: 280px;
+    width: min(280px, 72vw);
+  }
+`;
+
+const PortraitImageSurface = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #d8d6d4;
+`;
+
+const Img = styled.img`
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 12%;
+  transform: scale(0.82);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 300ms ease;
+  }
+
+  ${PortraitFrame}:hover & {
+    transform: scale(0.83);
   }
 `;
 
@@ -220,7 +250,6 @@ const Hero = () => {
     <div id="About">
       <HeroContainer>
         <HeroBg>
-          <StarCanvas />
           <HeroBgAnimation />
         </HeroBg>
 
@@ -256,7 +285,11 @@ const Hero = () => {
             <HeroRightContainer>
               <motion.div {...headContentAnimation}>
                 <Tilt>
-                  <Img src={HeroImg} alt="Anurag Bhatt" />
+                  <PortraitFrame>
+                    <PortraitImageSurface>
+                      <Img src={HeroImg} alt="Anurag Bhatt" />
+                    </PortraitImageSurface>
+                  </PortraitFrame>
                 </Tilt>
               </motion.div>
             </HeroRightContainer>

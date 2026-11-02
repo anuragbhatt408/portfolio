@@ -22,6 +22,11 @@ const Body = styled.div`
   position: relative;
 `;
 
+const Content = styled.div`
+  position: relative;
+  z-index: 1;
+`;
+
 const Wrapper = styled.div`
   padding-bottom: 100px;
   background: linear-gradient(
@@ -45,7 +50,7 @@ function App() {
         <Navbar />
         <Body>
           <StartCanvas />
-          <div>
+          <Content>
             <Hero />
             <Wrapper>
               <Skills />
@@ -57,7 +62,7 @@ function App() {
               <Contact />
             </Wrapper>
             <Footer />
-          </div>
+          </Content>
         </Body>
       </BrowserRouter>
       <ToastContainer />
